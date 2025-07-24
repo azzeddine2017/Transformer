@@ -1,0 +1,107 @@
+
+Hi.|مرحبًا.
+Run!|اركض!
+Help!|النجدة!
+Jump!|اقفز!
+Stop!|قف!
+Go on.|داوم.
+Go on.|استمر.
+Hello!|مرحباً.
+Hurry!|تعجّل!
+Hurry!|استعجل!
+I see.|انا اري
+I won!|أنا فُزت!
+Relax.|استرح.
+Smile.|ابتسم.
+Cheers!|في صحتك.
+Got it?|هل فهمت؟
+He ran.|ركض.
+I know.|أعرف.
+I know.|أعلم ذلك.
+I know.|أنا أعلم
+I'm 19.|أنا في 19
+Then what?|ماذا بعد ذلك؟
+Tom moved.|لقد تحرك توم.
+Tom waved.|لَوَحَ توم.
+Watch out!|انتبه
+We're hot.|نشعر بالحرارة
+Don't worry.|لا عليك.
+Go find Tom.|إذهب وابحث عن طوم.
+Have a seat.|استرح.
+He can come.|بإمكانه المجيء
+He is alone.|إنه وحيد.
+I am married.|أنا متزوج.
+I am thirsty.|أنا أشعر بالعطش.
+I ate caviar.|أكلت الكافيار.
+I can't talk.|لا أستطيع الكلام.
+I dialed 911.|اتّصلت ب‍ 911.
+He's so young.|إنهُ شاب جداً.
+He's so young.|إنهُ صغير جداً.
+He's very ill.|إنه مريض جداً.
+Here he comes.|ها قد أتى.
+Here or to go?|هنا أم تأخذها معك؟
+They hate you.|إنهم يكرهونك.
+They know Tom.|هم يعرفون توم
+They're happy.|إنهم سعداء
+They're happy.|هم سعداء
+This is a dog.|هذا كلب.
+I have sisters.|لدي أخوات
+I know the boy.|أعرف ذلك الولد.
+I like castles.|أحب القلاع.
+I like the dog.|أحب ذلك الكلب.
+I lost my keys.|أضعت مفاتيحي.
+That's a hotel.|ذاك فندقٌ.
+That's a hotel.|ذلك فندقٌ.
+That's my book.|هذا كتابي.
+The birds sang.|غردت العصافير.
+They all drank.|كلهم سكارى.
+He's in trouble.|إنهُ في مشكلة.
+He's my brother.|هو أخي
+He's not stupid.|ليس غبياً.
+Here's the bill.|تفضل الحساب
+Here's your dog.|ها هو كلبك.
+It's time to go.|حان وقت الذهاب.
+Lemons are sour.|الليمون حامض.
+Let me go alone.|دعني أذهب وحدي.
+Let me help you.|دعني أساعدك.
+Let's eat sushi.|لنأكل السوشي.
+You almost died.|أنتَ تقريباً مت.
+You betrayed me.|لقد خنتني.
+You betrayed me.|لقد خنتيني.
+You let me down.|خذلتني.
+You look gloomy.|تبدو كئيبا
+I don't know her.|أنا لا أعرفها
+I don't know him.|لا أعرفه.
+I don't know him.|أنا لا أعرفه
+I don't know why.|أنا لا أعرف لماذا
+I don't know you.|أنا لا أعرفك
+Do you speak English?|هل تتحدث الإنجليزية؟
+Where is the bathroom?|أين الحمام؟
+How much does it cost?|كم يكلف هذا؟
+I'm very tired.|أنا متعب جداً.
+What's your name?|ما اسمك؟
+Nice to meet you.|تشرفت بمعرفتك.
+I don't understand.|لا أفهم.
+Please speak slowly.|تحدث ببطء من فضلك.
+I like this food.|أحب هذا الطعام.
+The water is cold.|الماء بارد.
+My car is broken.|سيارتي معطلة.
+I need a doctor.|أحتاج إلى طبيب.
+Turn right here.|انعطف يميناً هنا.
+Turn left there.|انعطف يساراً هناك.
+Go straight ahead.|اذهب مباشرة للأمام.
+I'm lost.|لقد ضللت الطريق.
+Can you repeat that?|هل يمكنك إعادة ذلك؟
+What's the problem?|ما المشكلة؟
+I'm late.|أنا متأخر.
+Take care.|اعتني بنفسك.
+Call me later.|اتصل بي لاحقاً.
+I miss you.|أشتاق إليك.
+See you soon.|أراك قريباً.
+It's raining.|إنها تمطر.
+The book is on the table.|الكتاب على الطاولة.
+I love this city.|أحب هذه المدينة.
+Where are you from?|من أين أنت؟
+I'm from Morocco.|أنا من المغرب.
+Let's eat lunch.|دعنا نتناول الغداء.
+I'm happy today.|أنا سعيد اليوم.

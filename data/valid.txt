@@ -1,0 +1,61 @@
+
+Nobody's perfect.|لا يوجد شخص معصوم من الخطأ.
+Nothing happened.|لم يحدث شيء.
+Please don't ask.|لا تسأل إذا سمحت.
+Please don't cry.|من فضلك لا تبكِ.
+Please don't cry.|لا تبكِ من فضلك.
+What should I do?|ما الذي عليّ فعله؟
+What should I do?|ماذا أفعل الآن؟
+What woke you up?|ما الذي أيقظك؟
+What's for lunch?|ماذا للغداء؟
+What's happening?|ما الذي يحدث؟
+He refused to pay.|لقد رَفَضَ أن يدفع؟
+He struck a match.|أشعل عود ثقاب.
+He talks too fast.|يتحدث بسرعة كبيرة.
+He talks too much.|إنه يتكلم أكثر مما يجب.
+He threw the ball.|رمى الكرة.
+I'm really hungry.|أنا جائع جداً.
+I'm really hungry.|أنا في غاية الجوع.
+I'm really hungry.|أنا جائعٌ للغاية.
+I've done my best.|بذلت قصارى جهدي.
+I've done my duty.|قمت بواجبي.
+This is her house.|هذا بيتها.
+This is his house.|هذا بيته.
+This is my office.|هذا مكتبي.
+This is very good.|هذا جيد جدا
+This is your book.|ذاك كتابك.
+You make me happy.|أنت تجعلني سعيداً.
+You make me happy.|أنت تجعلني سعيدا/أنت تسعدني
+You must help her.|عليك أن تساعدها.
+You owe me a kiss.|إنّك مدين لي بقبلة.
+You owe me a kiss.|إنّكِ مدينة لي بقبلة.
+Can you help me?|هل يمكنك مساعدتي؟
+I need your help.|أحتاج مساعدتك.
+The weather is nice.|الطقس جميل.
+I love reading books.|أحب قراءة الكتب.
+Where is the library?|أين المكتبة؟
+Good morning!|صباح الخير!
+How are you today?|كيف حالك اليوم؟
+Thank you very much.|شكراً جزيلاً.
+You're welcome.|على الرحب والسعة.
+See you tomorrow.|أراك غداً.
+What time is it?|كم الساعة؟
+I am a student.|أنا طالب.
+The food is delicious.|الطعام لذيذ.
+I speak Arabic.|أتحدث العربية.
+I want to learn.|أريد أن أتعلم.
+Let's go together.|دعنا نذهب معاً.
+Have a nice day!|يوم سعيد!
+I understand now.|أفهم الآن.
+The city is beautiful.|المدينة جميلة.
+I live in Morocco.|أعيش في المغرب.
+It's cold today.|الجو بارد اليوم.
+I love my family.|أحب عائلتي.
+The sun is bright.|الشمس ساطعة.
+Welcome to my home.|مرحباً بك في منزلي.
+This is my friend.|هذا صديقي.
+I work as a teacher.|أعمل كمدرس.
+The coffee is hot.|القهوة ساخنة.
+I'm going to sleep.|سأذهب للنوم.
+Open the window.|افتح النافذة.
+Close the door.|أغلق الباب.

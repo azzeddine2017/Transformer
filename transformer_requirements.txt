@@ -1,0 +1,48 @@
+# Ring Language Requirements
+ring >= 1.17
+
+# Core Dependencies
+ringqt >= 1.17
+ringzip >= 1.0
+ringcurl >= 1.0
+ringodbc >= 1.0
+ringsqlite >= 1.0
+
+# GUI Dependencies
+qt5 >= 5.15.0
+
+# System Requirements
+ram >= 8GB
+cpu_cores >= 4
+
+# File Structure
+directories:
+  - models/
+  - vocab/
+  - data/
+  - logs/
+
+files:
+  - models/transformer-ar-en.model
+  - vocab/ar-en.vocab
+  - data/training/
+  - data/validation/
+  - logs/training.log
+
+# Training Data
+data_files:
+  - data/training/en-ar-large.txt
+  - data/training/en-ar-small.txt
+
+# Model Configuration
+model_params:
+  src_vocab_size: 32000
+  tgt_vocab_size: 32000
+  model_dim: 512
+  num_heads: 8
+  num_encoder_layers: 6
+  num_decoder_layers: 6
+  ff_dim: 2048
+  max_seq_length: 1000
+  batch_size: 32
+  warmup_steps: 4000
