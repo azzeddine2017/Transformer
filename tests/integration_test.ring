@@ -8,6 +8,37 @@ Load "../src/core/transformer.ring"
 Load "../src/core/trainer.ring"
 Load "../src/utils/logger.ring"
 
+# Main execution
+func main()
+    ? "FastPro Integration Test Suite"
+    ? "================================"
+    
+    # Run integration test
+    oIntegrationTest = new IntegrationTest()
+    bIntegrationPassed = oIntegrationTest.runCompleteTest()
+    
+    ? ""
+    
+    # Run system test
+    oSystemTest = new SystemTest()
+    oSystemTest.runFullSystemTest()
+    
+    ? ""
+    ? "Integration test results:"
+    if bIntegrationPassed
+        ? "✓ All integration tests PASSED"
+        ? "✓ FastPro optimization is working correctly"
+        ? "✓ System is ready for production use"
+    else
+        ? "✗ Some integration tests FAILED"
+        ? "✗ Review implementation before production use"
+    ok
+    
+    ? ""
+    ? "FastPro optimization implementation completed!"
+    ? "Check the generated reports for detailed performance metrics."
+ 
+ 
 Class IntegrationTest
     oLogger
     oTransformer
@@ -342,32 +373,3 @@ Class SystemTest
             
             oLogger.info("End-to-end pipeline (2x25): " + nTime + " seconds")
 
-# Main execution
-func main()
-    ? "FastPro Integration Test Suite"
-    ? "================================"
-    
-    # Run integration test
-    oIntegrationTest = new IntegrationTest()
-    bIntegrationPassed = oIntegrationTest.runCompleteTest()
-    
-    ? ""
-    
-    # Run system test
-    oSystemTest = new SystemTest()
-    oSystemTest.runFullSystemTest()
-    
-    ? ""
-    ? "Integration test results:"
-    if bIntegrationPassed
-        ? "✓ All integration tests PASSED"
-        ? "✓ FastPro optimization is working correctly"
-        ? "✓ System is ready for production use"
-    else
-        ? "✗ Some integration tests FAILED"
-        ? "✗ Review implementation before production use"
-    ok
-    
-    ? ""
-    ? "FastPro optimization implementation completed!"
-    ? "Check the generated reports for detailed performance metrics."

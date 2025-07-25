@@ -8,7 +8,16 @@ Load "../src/utils/ringmath.ring"
 Load "../src/utils/matrix.ring"
 Load "../src/core/transformer.ring"
 Load "../src/utils/logger.ring"
+ 
+ # Main execution
+func main()
+    oBenchmark = new FastProBenchmark()
+    oBenchmark.runAllBenchmarks()
 
+    ? "FastPro benchmarking completed!"
+    ? "Check fastpro_performance_report.txt for detailed results."
+ 
+ 
 Class FastProBenchmark
     oLogger
     aResults = []
@@ -482,10 +491,3 @@ Class FastProBenchmark
             cResult = substr(cResult, "%.2f", p1)
             return cResult
 
-# Main execution
-func main()
-    oBenchmark = new FastProBenchmark()
-    oBenchmark.runAllBenchmarks()
-
-    ? "FastPro benchmarking completed!"
-    ? "Check fastpro_performance_report.txt for detailed results."
