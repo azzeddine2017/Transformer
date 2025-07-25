@@ -1,6 +1,7 @@
 Load "stdlibcore.ring"
 Load "math.ring"
 Load "matrix.ring"
+Load "fastpro.ring"
 
 Class AdamOptimizer {
     # معلمات Adam
@@ -57,32 +58,28 @@ Class AdamOptimizer {
     private
 
     func matrix_zeros(nRows, nCols){
+        # Use FastPro to create zero matrix
         aResult = matrix(nRows, nCols)
-        for i = 1 to nRows
-            for j = 1 to nCols
-                aResult[i][j] = 0
-            next
-        next
-        return aResult
+        return updateList(aResult, :fill, :matrix, 0)
+    }
+
+    func matrix_scale(aMatrix, scalar){
+        # Use FastPro for scalar multiplication
+        return updateList(aMatrix, :scalar, :matrix, scalar)
+    }
+
+    func matrix_add(aA, aB){
+        # Use FastPro for matrix addition
+        return updateList(aA, :add, :matrix, aB)
     }
     func matrix_square(aMatrix){
-        aResult = matrix(len(aMatrix), len(aMatrix[1]))
-        for i = 1 to len(aMatrix)
-            for j = 1 to len(aMatrix[1])
-                aResult[i][j] = aMatrix[i][j] * aMatrix[i][j]
-            next
-        next
-        return aResult
-    }    
+        # Use FastPro for element-wise square
+        return updateList(aMatrix, :square, :matrix)
+    }
     func matrix_sqrt(aMatrix){
-        aResult = matrix(len(aMatrix), len(aMatrix[1]))
-        for i = 1 to len(aMatrix)
-            for j = 1 to len(aMatrix[1])
-                aResult[i][j] = sqrt(aMatrix[i][j])
-            next
-        next
-        return aResult
-    }   
+        # Use FastPro for element-wise square root
+        return updateList(aMatrix, :sqrt, :matrix)
+    }
     func matrix_divide(aA, aB){
         if len(aA) != len(aB) or len(aA[1]) != len(aB[1])
             raise("أبعاد المصفوفات غير متوافقة للقسمة")

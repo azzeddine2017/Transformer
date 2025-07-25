@@ -1,6 +1,7 @@
-# Transformer Implementation in Ring
+# Transformer Implementation in Ring - FastPro Optimized
 Load "ringmath.ring"
 Load "stdlibcore.ring"
+Load "fastpro.ring"
 Load "../config/system_config.ring"
 Load "../core/data_manager.ring"
 Load "matrix.ring"
@@ -39,24 +40,37 @@ Class MultiHeadAttention {
     }
     func scaled_dot_product_attention(oQ, oOK, oV, oMask){
         nDK = oQ.nCols
-        oScores = oQ.multiply(oOK.transpose())
-        
-        # التحجيم
-        for i = 1 to oScores.nRows
-            for j = 1 to oScores.nCols
-                oScores.set(i, j, oScores.get(i, j) / sqrt(nDK))
-            next
-        next
-        
-        # تطبيق القناع إذا وجد
+
+        # Use FastPro for efficient attention calculation
+        # Q * K^T
+        aQ = oQ.to2DArray()
+        aK = oOK.to2DArray()
+        aV = oV.to2DArray()
+
+        # Matrix multiplication and transpose using FastPro
+        aKT = updateList(aK, :transpose, :matrix)
+        aScores = updateList(aQ, :mul, :matrix, aKT)
+
+        # Scale by sqrt(d_k) using FastPro
+        aScores = updateList(aScores, :scalardiv, :matrix, sqrt(nDK))
+
+        # Apply mask if provided
         if oMask != null
-            # تنفيذ القناع
+            # Apply mask using FastPro operations
+            # Implementation depends on mask format
         ok
-        
-        # تطبيق softmax
-        oAttn = new Activations().softmax(oScores)
-        
-        return oAttn.multiply(oV)
+
+        # Apply softmax using FastPro
+        aAttn = updateList(aScores, :softmax, :matrix)
+
+        # Final multiplication: Attention * V
+        aResult = updateList(aAttn, :mul, :matrix, aV)
+
+        # Convert back to Matrix object
+        oResult = new Matrix(len(aResult), len(aResult[1]))
+        oResult.from2DArray(aResult)
+
+        return oResult
     }
     func forward(oX){
         nBatchSize = oX.nRows

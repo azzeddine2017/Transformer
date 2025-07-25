@@ -2,6 +2,7 @@
 # نظام تدريب نموذج المحول
 Load "stdlibcore.ring"
 Load "matrix.ring"
+Load "fastpro.ring"
 Load "transformer.ring"
 Load "optimizer.ring"
 Load "evaluator.ring"
@@ -185,16 +186,21 @@ Class TransformerTrainer {
         return [aSourceBatch, aTargetBatch]
     }  
     func calculateLoss(aOutput, aTarget){
-        # حساب خسارة الإنتروبيا المتقاطعة
-        fLoss = 0
-        for i = 1 to len(aOutput)
-            for j = 1 to len(aOutput[1])
-                fLoss += -aTarget[i][j] * log(aOutput[i][j] + 1e-10)
-            next
-        next
-        
+        # حساب خسارة الإنتروبيا المتقاطعة - FastPro Optimized
+        # Add small epsilon to prevent log(0)
+        aOutputSafe = updateList(aOutput, :add, :matrix, updateList(aOutput, :fill, :matrix, 1e-10))
+
+        # Calculate log of output
+        aLogOutput = updateList(aOutputSafe, :log, :matrix)
+
+        # Element-wise multiplication with target
+        aProduct = updateList(aTarget, :mul, :matrix, aLogOutput)
+
+        # Sum all elements and negate
+        fLoss = -updateList(aProduct, :allsum, :matrix)
+
         return fLoss / len(aOutput)
-    }  
+    }
     func calculateGradients(fLoss){
         # حساب التدرجات باستخدام الانتشار الخلفي
         return oTransformer.backward(fLoss)

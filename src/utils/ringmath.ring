@@ -1,6 +1,7 @@
-# Ring Math Library for Neural Networks
+# Ring Math Library for Neural Networks - FastPro Optimized
 Load "stdlibcore.ring"
 Load "math.ring"
+Load "fastpro.ring"
 
 Class Matrix 
     # المتغيرات العامة
@@ -23,85 +24,89 @@ Class Matrix
         if nCols != oOther.nRows
             return NULL
         ok
-        
+
+        # Convert to 2D arrays for FastPro processing
+        aMatrix1 = to2DArray()
+        aMatrix2 = oOther.to2DArray()
+
+        # Use FastPro matrix multiplication
+        aResult = updateList(aMatrix1, :mul, :matrix, aMatrix2)
+
+        # Convert back to Matrix object
         oResult = new Matrix(nRows, oOther.nCols)
-        
+        oResult.from2DArray(aResult)
+
+        return oResult
+
+    # FastPro Helper Methods
+    func to2DArray()
+        aResult = []
         for i = 1 to nRows
-            for j = 1 to oOther.nCols
-                nSum = 0
-                for k = 1 to nCols
-                    nSum += get(i, k) * oOther.get(k, j)
-                next
-                oResult.set(i, j, nSum)
+            aRow = []
+            for j = 1 to nCols
+                add(aRow, get(i, j))
+            next
+            add(aResult, aRow)
+        next
+        return aResult
+
+    func from2DArray(aArray)
+        nRows = len(aArray)
+        nCols = len(aArray[1])
+        aData = list(nRows * nCols)
+
+        for i = 1 to nRows
+            for j = 1 to nCols
+                set(i, j, aArray[i][j])
             next
         next
-        
-        return oResult
-    
+
     func add(oOther)
         if nRows != oOther.nRows or nCols != oOther.nCols
             return NULL
         ok
-        
+
+        # Use FastPro for matrix addition
+        aMatrix1 = to2DArray()
+        aMatrix2 = oOther.to2DArray()
+        aResult = updateList(aMatrix1, :add, :matrix, aMatrix2)
+
         oResult = new Matrix(nRows, nCols)
-        
-        for i = 1 to nRows
-            for j = 1 to nCols
-                oResult.set(i, j, get(i, j) + oOther.get(i, j))
-            next
-        next
-        
+        oResult.from2DArray(aResult)
+
         return oResult
     
     func transpose()
+        # Use FastPro for matrix transpose
+        aMatrix = to2DArray()
+        aResult = updateList(aMatrix, :transpose, :matrix)
+
         oResult = new Matrix(nCols, nRows)
-        
-        for i = 1 to nRows
-            for j = 1 to nCols
-                oResult.set(j, i, get(i, j))
-            next
-        next
-        
+        oResult.from2DArray(aResult)
+
         return oResult
 
     
 
 Class Activations 
     func relu(oX)
+        # Use FastPro for ReLU activation
+        aMatrix = oX.to2DArray()
+        aResult = updateList(aMatrix, :relu, :matrix)
+
         oResult = new Matrix(oX.nRows, oX.nCols)
-        
-        for i = 1 to oX.nRows
-            for j = 1 to oX.nCols
-                nValue = oX.get(i, j)
-                oResult.set(i, j, max(0, nValue))
-            next
-        next
-        
+        oResult.from2DArray(aResult)
+
         return oResult
     
     func softmax(oX)
+        # Use FastPro for Softmax activation
+        aMatrix = oX.to2DArray()
+        aResult = updateList(aMatrix, :softmax, :matrix)
+
         oResult = new Matrix(oX.nRows, oX.nCols)
-        
-        for i = 1 to oX.nRows
-            # حساب القيمة القصوى للصف
-            nMaxVal = oX.get(i, 1)
-            for j = 2 to oX.nCols
-                nMaxVal = max(nMaxVal, oX.get(i, j))
-            next
-            
-            # حساب المجموع للتطبيع
-            nSum = 0
-            for j = 1 to oX.nCols
-                nSum += exp(oX.get(i, j) - nMaxVal)
-            next
-            
-            # حساب القيم النهائية
-            for j = 1 to oX.nCols
-                nValue = exp(oX.get(i, j) - nMaxVal) / nSum
-                oResult.set(i, j, nValue)
-            next
-        next
-        
+        oResult.from2DArray(aResult)
+
         return oResult
 
     private

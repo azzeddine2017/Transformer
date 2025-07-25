@@ -1,5 +1,6 @@
 Load "stdlibcore.ring"
 Load "math.ring"
+Load "fastpro.ring"
 
 # فئة المصفوفات للعمليات الحسابية
 Class Matrix
@@ -69,35 +70,28 @@ Class Matrix
         if nCols != oOther.nRows
             raise("أبعاد المصفوفات غير متطابقة للضرب")
         ok
-        
+
+        # Use FastPro for matrix multiplication
+        aResult = updateList(aData, :mul, :matrix, oOther.aData)
+
         result = new Matrix(nRows, oOther.nCols)
-        for i = 1 to nRows
-            for j = 1 to oOther.nCols
-                sum = 0
-                for k = 1 to nCols
-                    sum += aData[i][k] * oOther.aData[k][j]
-                next
-                result.aData[i][j] = sum
-            next
-        next
+        result.aData = aResult
         return result
         
     func transpose
+        # Use FastPro for matrix transpose
+        aResult = updateList(aData, :transpose, :matrix)
+
         result = new Matrix(nCols, nRows)
-        for i = 1 to nRows
-            for j = 1 to nCols
-                result.aData[j][i] = aData[i][j]
-            next
-        next
+        result.aData = aResult
         return result
         
     func scale(scalar)
+        # Use FastPro for scalar multiplication
+        aResult = updateList(aData, :scalar, :matrix, scalar)
+
         result = new Matrix(nRows, nCols)
-        for i = 1 to nRows
-            for j = 1 to nCols
-                result.aData[i][j] = aData[i][j] * scalar
-            next
-        next
+        result.aData = aResult
         return result
         
     func elementWiseMultiply(oOther)
@@ -114,27 +108,11 @@ Class Matrix
         return result
         
     func softmax
+        # Use FastPro for softmax
+        aResult = updateList(aData, :softmax, :matrix)
+
         result = new Matrix(nRows, nCols)
-        for i = 1 to nRows
-            # البحث عن أكبر قيمة في الصف
-            maxVal = aData[i][1]
-            for j = 2 to nCols
-                if aData[i][j] > maxVal
-                    maxVal = aData[i][j]
-                ok
-            next
-            
-            # حساب المجموع
-            sum = 0
-            for j = 1 to nCols
-                sum += exp(aData[i][j] - maxVal)
-            next
-            
-            # حساب القيم النهائية
-            for j = 1 to nCols
-                result.aData[i][j] = exp(aData[i][j] - maxVal) / sum
-            next
-        next
+        result.aData = aResult
         return result
         
     func save(oFile)

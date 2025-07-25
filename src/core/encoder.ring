@@ -1,4 +1,5 @@
-# فئة طبقة المشفر
+# فئة طبقة المشفر - FastPro Optimized
+Load "fastpro.ring"
 Class EncoderLayer {
     # خصائص الطبقة
     nModelDim = 512        # أبعاد النموذج
@@ -100,26 +101,27 @@ Class FeedForward {
         aB2 = list(nDModel)
     }
     
-    # الخطوة الأمامية
+    # الخطوة الأمامية - FastPro Optimized
     func forward(x) {
-        # الطبقة الأولى
-        h = matrix_multiply(x, aW1)
-        for i = 1 to len(h) {
-            for j = 1 to nDFF {
-                h[i][j] += aB1[j]
-                # تطبيق دالة ReLU
-                h[i][j] = max(0, h[i][j])
-            }
+        # الطبقة الأولى - Matrix multiplication using FastPro
+        h = updateList(x, :mul, :matrix, aW1)
+
+        # Add bias using FastPro
+        for j = 1 to nDFF {
+            updateList(h, :add, :col, j, aB1[j])
         }
-        
-        # الطبقة الثانية
-        out = matrix_multiply(h, aW2)
-        for i = 1 to len(out) {
-            for j = 1 to nDModel {
-                out[i][j] += aB2[j]
-            }
+
+        # Apply ReLU using FastPro
+        h = updateList(h, :relu, :matrix)
+
+        # الطبقة الثانية - Matrix multiplication using FastPro
+        out = updateList(h, :mul, :matrix, aW2)
+
+        # Add bias using FastPro
+        for j = 1 to nDModel {
+            updateList(out, :add, :col, j, aB2[j])
         }
-        
+
         return out
     }
 }

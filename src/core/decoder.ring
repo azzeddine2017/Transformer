@@ -4,7 +4,8 @@ Load "matrix.ring"
 Load "transformer.ring"
 Load "encoder.ring"
 
-# فئة طبقة فك التشفير
+# فئة طبقة فك التشفير - FastPro Optimized
+Load "fastpro.ring"
 Class DecoderLayer{
     # مكونات الطبقة
     oSelfAttention      # طبقة الانتباه الذاتي
@@ -146,17 +147,13 @@ Class MultiHeadAttention{
         aK = matrix(len(k), nDModel)
         aV = matrix(len(v), nDModel)
         
-        # تطبيق الانتباه الذاتي
-        aResult = matrix(len(q), nDModel)
-        for i = 1 to len(q)
-            for j = 1 to nDModel
-                aResult[i][j] = 0
-                for k = 1 to len(k)
-                    aResult[i][j] += aQ[i][j] * aK[k][j] * aV[k][j]
-                next
-            next
-        next
-        
+        # تطبيق الانتباه الذاتي - FastPro Optimized
+        # Use FastPro for efficient attention computation
+        aScores = updateList(aQ, :mul, :matrix, updateList(aK, :transpose, :matrix))
+        aScores = updateList(aScores, :scalardiv, :matrix, sqrt(nDModel))
+        aAttn = updateList(aScores, :softmax, :matrix)
+        aResult = updateList(aAttn, :mul, :matrix, aV)
+
         return aResult
     }
 # طبقة التطبيع الطبقي
